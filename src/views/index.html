@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <title>Bitacora PE</title>
+</head>
+<body>
+    <div id="accordion" class="m-2">
+
+        <!-- General -->
+        <div class="card my-1">
+            <div style="color: white;" class="card-header bg-primary" id="generalHeader" data-toggle="collapse" data-target="#general" aria-expanded="false" aria-controls="general">
+                <h5 class="mb-0">General</h5>
+            </div>
+
+            <div id="general" class="collapse" aria-labelledby="generalHeader">
+                <div class="card-body">
+                    <form class="row">
+                        <div class="form-group col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                            <small for="logType" class="control-label form-text text-muted">Servicio</small>
+                            <select class="form-control form-control-sm" id="logType" onchange="selectService()" required="">
+                                <option value="" selected=""></option>
+                                <option value="OS">OS</option>
+                                <option value="ID">ID</option>
+                                <option value="OT">OT</option>
+                                <option value="CU">CU</option>
+                                <option value="SOPORTE">SOPORTE</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-2">
+                            <small for="logId" class="control-label form-text text-muted">ID</small>
+                            <input type="text" class="form-control form-control-sm" id="logId" required="">
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-2">
+                            <small for="releaseType" class="control-label form-text text-muted">Tipo</small>
+                            <select class="form-control form-control-sm" id="releaseType">
+                                <option value="" selected=""></option>
+                                <option value="Organica">Orgánica</option>
+                                <option value="Masiva">Masiva</option>
+                                <option value="ZTE">ZTE</option>
+                            </select> 
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-3 col-md-2 col-lg-2">
+                            <small for="numEmpl" class="control-label form-text text-muted">Num Empl</small>
+                            <input type="text" class="form-control form-control-sm" id="numEmpl">
+                        </div> 
+                        <div class="form-group col-xs-6 col-sm-5 col-md-4 col-lg-3">
+                            <small for="nameEmpl" class="control-label form-text text-muted">IDC</small>
+                            <input type="text" class="form-control form-control-sm" id="nameEmpl">
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <small for="provider" class="control-label form-text text-muted">Proveedor</small>
+                            <select class="form-control form-control-sm" id="provider">
+                                <option selected="" value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <small for="district" class="control-label form-text text-muted">Distrito</small>
+                            <select class="form-control form-control-sm" id="district">
+                                <option selected="" value=""></option>
+                            </select>
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ubicacion -->
+        <div class="card my-1">
+            <div style="color: white;" class="card-header bg-warning" id="locationHeader" data-toggle="collapse" data-target="#location" aria-expanded="false" aria-controls="location">
+                <h5 class="mb-0">Ubicación</h5>
+            </div>
+
+            <div id="location" class="collapse" aria-labelledby="locationHeader">
+                <div class="card-body">
+                    <form class="row">
+                        <div class="form-group col-sm-6 col-md-5 col-lg-4">
+                            <small for="address" class="control-label form-text text-muted">Dirección</small>
+                            <input type="text" class="form-control form-control-sm" id="address">
+                        </div>
+                        <div class="form-group col-sm-6 col-md-4 col-lg-2">
+                            <small for="coordinates" class="control-label form-text text-muted">Coordenadas</small>
+                            <input type="text" class="form-control form-control-sm" id="coordinates">
+                        </div>
+                        <div class="form-group col-sm-6 col-md-3 col-lg-3">
+                            <small for="cluster" class="control-label form-text text-muted">Cluster</small>
+                            <select class="form-control form-control-sm" id="cluster">
+                                <option selected=""></option>
+                            </select> 
+                        </div>
+                        <div class="form-group col-sm-6 col-md-4 col-lg-3">
+                            <small for="olt" class="control-label form-text text-muted">OLT</small>
+                            <input type="text" class="form-control form-control-sm" id="olt">
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Splitter -->
+        <div class="card my-1">
+            <div  style="color: white;" class="card-header bg-secondary" id="sp1Header" data-toggle="collapse" data-target="#sp1" aria-expanded="false" aria-controls="sp1">
+                <div class="row mx-1 justify-content-between">
+                    <h5 class="mb-0">Splitter 1</h5>
+                </div>
+            </div>
+
+            <div id="sp1" class="collapse" aria-labelledby="sp1Header">
+                <div class="card-body">
+                    <form class="row">
+                        <div class="form-group col-sm-4 col-md-2 col-lg-2">
+                            <small for="f1" class="control-label form-text text-muted">F</small>
+                            <select class="form-control form-control-sm" id="f1">
+                                <option selected=""></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                            </select> 
+                        </div>
+                        <div class="form-group col-sm-4 col-md-2 col-lg-2">
+                            <small for="s1" class="control-label form-text text-muted">S</small>
+                            <select class="form-control form-control-sm" id="s1">
+                                <option selected=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                            </select> 
+                        </div>
+                        <div class="form-group col-sm-2 col-md-2 col-lg-2">
+                            <small for="p1" class="control-label form-text text-muted">P</small>
+                            <select class="form-control form-control-sm" id="p1">
+                                <option selected=""></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                            </select> 
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                            <small for="bw1" class="control-label form-text text-muted">Ancho de Banda</small>
+                            <input type="number" class="form-control form-control-sm" id="bw1" min="0" step="1">
+                        </div> 
+                        <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                            <small for="clients1" class="control-label form-text text-muted">Clientes</small>
+                            <input type="number" class="form-control form-control-sm" id="clients1" min="0" step="1">
+                        </div>
+                    </form>
+                    <hr class="my-2">
+                    <form id="alarmForm1">
+                        <h5>Alarmas</h5> 
+                        <!-- Alarma 1 -->
+                        <div class="form-group row alarm">
+                            <small for="alarm1_1" class="control-label form-text text-muted col-auto">Alarma 1</small>
+                            <div class="col-sm-6 col-md-7 col-lg-5">
+                                <input type="text" class="form-control form-control-sm" id="alarm1_1">
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-2 mt-2 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0">
+                                <select class="form-control form-control-sm" id="alarm1_1_st">
+                                    <option value="" selected=""></option>
+                                    <option value="Alarmada">Alarmada</option>
+                                    <option value="Apagada">Apagada</option>
+                                </select>                             
+                            </div>
+                        </div>
+                        <!-- Alarma 2 -->
+                        <div class="form-group row alarm">
+                            <small for="alarm1_2" class="control-label form-text text-muted col-auto">Alarma 2</small>
+                            <div class="col-sm-6 col-md-7 col-lg-5">
+                                <input type="text" class="form-control form-control-sm" id="alarm1_2">
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-2">
+                                <select class="form-control form-control-sm mt-2 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0" id="alarm1_2_st">
+                                    <option value="" selected=""></option>
+                                    <option value="Alarmada">Alarmada</option>
+                                    <option value="Apagada">Apagada</option>
+                                </select>                             
+                            </div>
+                        </div>
+                        <!-- Alarma 3 -->
+                        <div class="form-group row alarm">
+                            <small for="alarm1_2" class="control-label form-text text-muted col-auto">Alarma 3</small>
+                            <div class="col-sm-6 col-md-7 col-lg-5">
+                                <input type="text" class="form-control form-control-sm" id="alarm1_3">
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-2">
+                                <select class="form-control form-control-sm mt-2 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0" id="alarm1_3_st">
+                                    <option value="" selected=""></option>
+                                    <option value="Alarmada">Alarmada</option>
+                                    <option value="Apagada">Apagada</option>
+                                </select>                             
+                            </div>
+                        </div>
+                    </form>
+                    <div class="form-group row justify-content-center">
+                        <button type="button" class="btn btn-success btn-sm" onclick="addAlarm('1')">+</button>
+                    </div>
+                    <hr class="my-2">
+                    <form>
+                        <h5>Puertos</h5>
+                        <div class="form-group row justify-content-center">
+                            <div class="col-auto">
+                                <select class="form-control form-control-sm mt-2 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0" id="ports1" onchange="selectPorts('1')">
+                                    <option value="" selected=""></option>
+                                    <option value="8">1:8</option>
+                                    <option value="16">1:16</option>
+                                </select>                             
+                            </div>
+                        </div>
+                        <div id="portsDiv1"></div>
+                    </form>         
+                </div>
+            </div>
+        </div>
+
+        <div id="splitters">
+            <div class="card my-1" id="addSplitter">
+                <div style="color: white;" class="card-header bg-success" onclick="addSplitter()">
+                    <h5 class="mb-0 text-center">+</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comentarios -->
+        <div class="card my-1">
+            <div style="color: white;" class="card-header bg-info" id="commentsHeader" data-toggle="collapse" data-target="#commentsCollapse" aria-expanded="false" aria-controls="commentsCollapse">
+                <h5 class="mb-0">Comentarios</h5>
+            </div>
+
+            <div id="commentsCollapse" class="collapse" aria-labelledby="commentsHeader">
+                <div class="card-body">
+                    <form class="row">
+                        <textarea class="form-control" id="comments" cols="30" rows="5"></textarea> 
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center m-2">
+            <button class="btn btn-primary mx-1 my-1" onclick="genScript()"><span style="font-weight: bold;">Script</span></button>
+            <button class="btn btn-success mx-1 my-1" onclick="saveLog(null)" id="saveBtn"><span style="font-weight: bold;">Guardar</span></button>
+            <button class="btn btn-warning mx-1 my-1" data-toggle="modal" data-target="#clear" aria-expanded="false"><span style="font-weight: bold;">Limpiar</span></button>
+        </div>
+
+        <div class="row justify-content-center m-2">
+            <button class="btn btn-secondary mx-1 my-1" onclick="$('#idsModal').modal('show')"><span style="font-weight: bold;">IDS</span></button>
+            <button class="btn btn-info mx-1 my-1" onclick="renderLogs()"><span style="font-weight: bold;">Folios</span></button>
+        </div>
+
+    </div>
+
+<!-- ************  Modals ***********      -->
+
+<!-- Clear -->
+<div id="clear" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- CONTENIDO -->
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h4 style="color: white" class="modal-title">¿Seguro?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            Se perderan todos los cambios
+            <div class="row justify-content-center mt-2">
+                <button type="button" class="btn btn-warning mx-1" onclick="location.reload()">Si</button>
+                <button type="button" class="btn btn-secondary mx-1" data-dismiss="modal">No</button>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Script -->
+<div id="scriptModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- CONTENIDO -->
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h4 style="color: white" class="modal-title">Script</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="row justify-content-center my-2">
+                <button class="btn btn-primary btn-sm" onclick="copyToClip('script')">Copiar</button>
+            </div> 
+            <textarea class="form-control" id="script" cols="60" rows="30"></textarea>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- IDS -->
+<div id="idsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- CONTENIDO -->
+      <div class="modal-content">
+        <div class="modal-header bg-secondary">
+          <h4 style="color: white" class="modal-title">IDS</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group row justify-content-center">
+                    <small for="name" class="control-label form-text text-muted col-auto">Nombre IDS:</small>
+                    <div class="col-9">
+                        <input type="text" class="form-control form-control-sm" id="name" style="text-transform: uppercase;">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-secondary" id="userBtn"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Tickets -->
+<div id="ticketsModal" class="modal fade" role="dialog" style="min-width: max-content; margin-right: auto;">
+    <div class="modal-dialog modal-lg">
+      <!-- CONTENIDO -->
+      <div class="modal-content" style="min-width: max-content;">
+        <div class="modal-header bg-info">
+          <h4 style="color: white" class="modal-title">Folios</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h5 id="totalTickets" class="text-center"></h5>
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-info">
+                        <th scope="col">Servicio</th>
+                        <th scope="col">No.</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Detalle</th>
+                        <th scope="col">Borrar</th>
+                    </tr>
+                </thead>
+                <tbody id="tickets"></tbody>
+              </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Success -->
+<div id="successModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- CONTENIDO -->
+      <div class="modal-content">
+        <div class="modal-header bg-success">
+          <h4 style="color: white" class="modal-title">Éxito</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div id="successMessage" class="row justify-content-center"></div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Error -->
+<div id="errorModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- CONTENIDO -->
+      <div class="modal-content">
+        <div class="modal-header bg-danger">
+          <h4 style="color: white" class="modal-title">Error</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div id="errorMessage" class="row justify-content-center"></div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script src="../app/renderer.js"></script>
+</body>
+</html>

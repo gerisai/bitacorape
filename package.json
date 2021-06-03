@@ -1,0 +1,33 @@
+{
+  "name": "bitacorapejs",
+  "version": "1.0.0",
+  "description": "Tiny substitute for web app",
+  "main": "./src/app/main.js",
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron ./src/app/main.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "Bitacora PE",
+    "productName": "Bitacora PE",
+    "win": {
+      "target": "NSIS",
+      "icon": "../build/PE.png"
+    }
+  },
+  "author": "Gerardo Diaz",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.2.0",
+    "electron-builder": "^22.10.5"
+  },
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
+    "sequelize": "^6.5.0",
+    "sqlite3": "^5.0.2"
+  }
+}
